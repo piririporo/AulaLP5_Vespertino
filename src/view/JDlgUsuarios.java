@@ -264,6 +264,14 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
+         Util.habilitar(
+                true, jTxtCodigo,jTxtNome,jTxtApelido, 
+                jFmtCpf, jFmtDataDeNascimento, 
+                jPwfSenha,jCboNivel,jChbAtivo
+                ,jBtnConfirmar,jBtnCancelar);
+         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
+         Util.limpar(jTxtCodigo, jTxtNome);
+
 
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -275,6 +283,12 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+         Util.habilitar(
+                false, jTxtCodigo,jTxtNome,jTxtApelido, 
+                jFmtCpf, jFmtDataDeNascimento, 
+                jPwfSenha,jCboNivel,jChbAtivo
+                ,jBtnConfirmar,jBtnCancelar);
+         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir,jBtnPesquisar);
  
 
 
@@ -282,6 +296,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here: 
+        
 
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
