@@ -59,8 +59,8 @@ public class ProdutosDao extends AbstractDao {
         session.getTransaction().commit();
         return lista;    }
     public static void main(String[]args){
-        ProdutosDao usuariosDao = new ProdutosDao();
-        usuariosDao.listAll();
+        ProdutosDao produtosDao = new ProdutosDao();
+        produtosDao.listAll();
     }
      
 }

@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-
+package view;
 
 import bean.Usuarios;
-import dao.UsuariosDAO;
+import dao.UsuariosDao;
 import java.util.List;
+import view.JDlgUsuarios;
 
 /**
  *
@@ -17,7 +18,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
-//    private JDlgUsuarios jDlgUsuarios;
+       private JDlgUsuarios jDlgUsuarios;
     ControllerUsuarios controllerUsuarios;
     
     public JDlgUsuariosPesquisar(java.awt.Frame parent, boolean modal) {
@@ -26,15 +27,15 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Pesquisar Usuários");
         controllerUsuarios = new ControllerUsuarios();
-//        UsuariosDAO usuariosDAO = new UsuariosDAO();
-//        List lista = usuariosDAO.listAll();
-//        controllerUsuarios.setList(lista);
+        UsuariosDao usuariosDao = new UsuariosDao();
+       List lista =(List) usuariosDao.listAll();
+        controllerUsuarios.setList(lista);
         jTable1.setModel(controllerUsuarios);
     }
 
-//    public void setTelaAnterior( JDlgUsuarios jDlgUsuarios) {
-//        this.jDlgUsuarios = jDlgUsuarios;
-//    }
+    public void setTelaAnterior( JDlgUsuarios jDlgUsuarios) {
+       this.jDlgUsuarios = jDlgUsuarios;
+   }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +101,7 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         Usuarios usuarios =  controllerUsuarios.getBean( jTable1.getSelectedRow() );
-//        jDlgUsuarios.beanView(usuarios);
+        jDlgUsuarios.beanView(usuarios);
         this.setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
