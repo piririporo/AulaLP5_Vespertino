@@ -1,8 +1,7 @@
 package bean;
-// Generated 10/09/2025 16:49:40 by Hibernate Tools 4.3.1
+// Generated 17/09/2025 17:29:19 by Hibernate Tools 4.3.1
 
 
-;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,16 +22,16 @@ import javax.persistence.Table;
 public class PedidosProdutos  implements java.io.Serializable {
 
 
-     private Integer idpedidosProdutos;
+     private int idpedidosProdutos;
      private Pedidos pedidos;
      private Produtos produtos;
-     private Integer quantidade;
+     private int quantidade;
      private double valorUnitario;
 
     public PedidosProdutos() {
     }
 
-    public PedidosProdutos(Pedidos pedidos, Produtos produtos, Integer quantidade, double valorUnitario) {
+    public PedidosProdutos(Pedidos pedidos, Produtos produtos, int quantidade, double valorUnitario) {
        this.pedidos = pedidos;
        this.produtos = produtos;
        this.quantidade = quantidade;
@@ -43,11 +42,11 @@ public class PedidosProdutos  implements java.io.Serializable {
 
     
     @Column(name="idpedidos_produtos", unique=true, nullable=false)
-    public Integer getIdpedidosProdutos() {
+    public int getIdpedidosProdutos() {
         return this.idpedidosProdutos;
     }
     
-    public void setIdpedidosProdutos(Integer idpedidosProdutos) {
+    public void setIdpedidosProdutos(int idpedidosProdutos) {
         this.idpedidosProdutos = idpedidosProdutos;
     }
 
@@ -73,11 +72,11 @@ public class PedidosProdutos  implements java.io.Serializable {
 
     
     @Column(name="quantidade")
-    public Integer getQuantidade() {
+    public int getQuantidade() {
         return this.quantidade;
     }
     
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

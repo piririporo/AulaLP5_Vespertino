@@ -1,7 +1,5 @@
 package bean;
-// Generated 10/09/2025 16:49:40 by Hibernate Tools 4.3.1
-
-
+// Generated 17/09/2025 17:29:19 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,6 +31,7 @@ public class Pedidos  implements java.io.Serializable {
      private Date data;
      private double total;
 
+
     public Pedidos() {
     }
 
@@ -40,13 +39,13 @@ public class Pedidos  implements java.io.Serializable {
     public Pedidos(int idpedidos) {
         this.idpedidos = idpedidos;
     }
-    public Pedidos(int idpedidos, Clientes clientes, Vendedor vendedor, Date data, double total, Set pedidosProdutoses) {
+    public Pedidos(int idpedidos, Clientes clientes, Vendedor vendedor, Date data, double total) {
        this.idpedidos = idpedidos;
        this.clientes = clientes;
        this.vendedor = vendedor;
        this.data = data;
        this.total = total;
-   
+
     }
    
      @Id 
@@ -100,11 +99,6 @@ public class Pedidos  implements java.io.Serializable {
     public void setTotal(double total) {
         this.total = total;
     }
-
-
-
-
-
 
 }
 
