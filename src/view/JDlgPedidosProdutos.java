@@ -5,6 +5,7 @@
  */
 package view;
 
+import bean.PedidosProdutos;
 import bean.Produtos;
 import dao.ProdutosDAO;
 import java.util.List;
@@ -15,7 +16,7 @@ import tools.Util;
  * @author u1845853
  */
 public class JDlgPedidosProdutos extends javax.swing.JDialog {
-
+    JDlgPedidos jDlgPedidos;
     /**
      * Creates new form JDlgPedidosProdutos
      */
@@ -32,6 +33,10 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
         }
         Util.habilitar(false, jTxtValorUni, jTxtTotal);
        
+    }
+    public void setTelaAnterior(JDlgPedidos jDlgPedidos){
+        this.jDlgPedidos = jDlgPedidos;
+        
     }
 
     /**
@@ -157,7 +162,13 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        PedidosProdutos pedidosProdutos = new PedidosProdutos();
+        pedidosProdutos.setProdutos((Produtos) jCboProdutos.getSelectedItem());
+        pedidosProdutos.setQuantidade(Util.strToInt(jTxtQuantidade.getText()) );
+        pedidosProdutos.setValorUnitario(Util.strToDouble(jTxtValorUni.getText()) );
+        jDlgPedidos.controllerPedidosProdutos.addBean(pedidosProdutos);
         setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

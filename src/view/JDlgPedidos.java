@@ -9,7 +9,10 @@ import bean.Clientes;
 import bean.Pedidos;
 import bean.Vendedor;
 import dao.ClientesDAO;
+import dao.PedidosDAO;
+import dao.PedidosProdutosDAO;
 import dao.VendedorDAO;
+import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
 
@@ -18,13 +21,16 @@ import tools.Util;
  * @author u1845853
  */
 public class JDlgPedidos extends javax.swing.JDialog {
-
-    /**
+     ControllerPedidosProdutos controllerPedidosProdutos;
+     boolean incluir;
+    
+     /**
      * Creates new form JDlgPedidos
      */
     public JDlgPedidos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Pedidos");
         setLocationRelativeTo(null);
         ClientesDAO clientesDAO = new ClientesDAO();
         List lista = (List) clientesDAO.listAll();
@@ -37,6 +43,9 @@ public class JDlgPedidos extends javax.swing.JDialog {
         for (Object object : listaVend) {
             jCboVendedor.addItem((Vendedor) object);
         }
+        controllerPedidosProdutos = new ControllerPedidosProdutos();
+        controllerPedidosProdutos.setList(new ArrayList());
+        jTable1.setModel(controllerPedidosProdutos);
     }
 
     public Pedidos viewBean() {
@@ -334,16 +343,23 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-//        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        PedidosDAO usuariosDAO = new PedidosDAO();
+        PedidosProdutosDAO pedidosProdutosDAO = new PedidosProdutosDAO();
         Pedidos pedidos = viewBean();
-//        if (incluir == true) {
-//            pedidosDAO.insert(pedidos);
-//            usuariosDAO.insert( viewBean() );
-//        } else {
-//            usuariosDAO.update(usuarios);
-//            //usuariosDAO.update( viewBean() );
-//        }
-//
+         
+      if (incluir == true) {
+            pedidosDAO.insert(pedidos);
+            for(int ind = 0; ind < jTable1.getRowCount(); ind++){
+            pedidosProdutos pedidosProdutos = controllerPedidosProdutos.getBean(ind);
+            pedidosProdutos.setPedidos(pedidos);
+                    
+                    }
+            else {
+            pedidosProdutosDAO.update(pedidos);
+           //usuariosDAO.update( viewBean() );
+       }
+      }
+
 //        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf,
 //            jFmtDataDeNascimento, jPwfSenha, jCboNivel, jChbAtivo,
 //            jBtnConfirmar, jBtnCancelar);
@@ -354,9 +370,14 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
-        if (Util.perguntar("Deseja excluir o produto ?") == true) {
+       if (jTable1.getSelectedRow()== -1){
+           Util.mensagem("OOOOOOOOOOOOOOO seleciona linha");
+       }else{
+            if (Util.perguntar("Deseja excluir o produto ?") == true) {
+            controllerPedidosProdutos.removeBean(jTable1.getSelectedRow());
 
         }
+       }
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
@@ -368,6 +389,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
         JDlgPedidosProdutos jDlgPedidosProdutos = new JDlgPedidosProdutos(null, true);
+        jDlgPedidosProdutos.setTelaAnterior(this);
         jDlgPedidosProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
