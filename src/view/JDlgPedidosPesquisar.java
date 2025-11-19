@@ -4,38 +4,38 @@
  */
 package view;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
+import bean.Pedidos;
+import dao.PedidosDAO;
+import dao.PedidosDAO;
 import java.util.List;
 import tools.Util;
-import view.JDlgUsuarios;
 
 /**
  *
  * @author Marcos
  */
-public class JDlgVendasPesquisar extends javax.swing.JDialog {
+public class JDlgPedidosPesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgUsuariosPesquisar
+     * Creates new form JDlgPedidosPesquisar
      */
-    private JDlgUsuarios jDlgUsuarios;
-    ControllerUsuarios controllerUsuarios;
+    private JDlgPedidos jDlgPedidos;
+    ControllerPedidos controllerPedidos;
 
-    public JDlgVendasPesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgPedidosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Pesquisar Usuários");
-        controllerUsuarios = new ControllerUsuarios();
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-        List lista = (List) usuariosDAO.listAll();
-        controllerUsuarios.setList(lista);
-        jTable1.setModel(controllerUsuarios);
+        setTitle("Pesquisar Pedidos");
+        controllerPedidos = new ControllerPedidos();
+        PedidosDAO pedidosDAO = new PedidosDAO();
+        List lista = (List) pedidosDAO.listAll();
+        controllerPedidos.setList(lista);
+        jTable1.setModel(controllerPedidos);
     }
 
-    public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
-        this.jDlgUsuarios = jDlgUsuarios;
+    public void setTelaAnterior(JDlgPedidos jDlgPedidos) {
+        this.jDlgPedidos = jDlgPedidos;
     }
 
     /**
@@ -108,8 +108,8 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         if (jTable1.getSelectedRow() == -1) {
             Util.mensagem("Nenhum registro foi selecionada. Favor selecionar um registro.");
         } else {
-            Usuarios usuarios = controllerUsuarios.getBean(jTable1.getSelectedRow());
-            jDlgUsuarios.beanView(usuarios);
+            Pedidos pedidos = controllerPedidos.getBean(jTable1.getSelectedRow());
+            jDlgPedidos.beanView(pedidos);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jBtnOkActionPerformed
@@ -138,14 +138,18 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPedidosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPedidosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPedidosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPedidosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -154,7 +158,7 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgVendasPesquisar dialog = new JDlgVendasPesquisar(new javax.swing.JFrame(), true);
+                JDlgPedidosPesquisar dialog = new JDlgPedidosPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

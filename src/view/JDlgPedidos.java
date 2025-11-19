@@ -12,7 +12,6 @@ import bean.Vendedor;
 import dao.ClientesDAO;
 import dao.PedidosDAO;
 import dao.PedidosProdutosDAO;
-import dao.UsuariosDAO;
 import dao.VendedorDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +65,9 @@ public class JDlgPedidos extends javax.swing.JDialog {
         jTxtTotal.setText(Util.doubleToStr(pedidos.getTotal()));
         jCboClientes.setSelectedItem(pedidos.getClientes());
         jCboVendedor.setSelectedItem(pedidos.getVendedor());
+        PedidosProdutosDAO pedidosProdutosDAO = new PedidosProdutosDAO();
+        List lista = (List) pedidosProdutosDAO.listProdutos(pedidos);
+        controllerPedProd.setList(lista);
     }
 
     /**
@@ -304,13 +306,14 @@ public class JDlgPedidos extends javax.swing.JDialog {
 //        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 //        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataDeNascimento,
 //            jPwfSenha, jCboNivel, jChbAtivo);
+   controllerPedProd.setList(new ArrayList());
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-        JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);
-        //jDlgUsuariosPesquisar.setTelaAnterior(this);
-        jDlgUsuariosPesquisar.setVisible(true);
+        JDlgPedidosPesquisar jDlgPedidosPesquisar = new JDlgPedidosPesquisar(null, true);
+        jDlgPedidosPesquisar.setTelaAnterior(this);
+        jDlgPedidosPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -337,10 +340,16 @@ public class JDlgPedidos extends javax.swing.JDialog {
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
         if (Util.perguntar("Deseja excluir ?") == true) {
-            PedidosDAO pedidosDAO = new PedidosDAO();            
-            pedidosDAO.insert(viewBean());            
+            PedidosDAO pedidosDAO = new PedidosDAO();  
+            PedidosProdutosDAO pedidosProdutosDAO = new PedidosProdutosDAO(); 
+             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
+                PedidosProdutos pedidosProdutos = controllerPedProd.getBean(ind);
+                pedidosProdutosDAO.delete(pedidosProdutos);
+            }
+              pedidosDAO.delete(viewBean());  
         }
         Util.limpar(jTxtCodigo, jFmtData, jCboClientes, jCboVendedor, jTxtTotal);
+        controllerPedProd.setList(new ArrayList());
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed

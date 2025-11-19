@@ -19,6 +19,7 @@ public class ControllerPedidosProdutos extends AbstractTableModel {
 
     public void setList(List lstPedidosProdutos) {
         this.lstPedidosProdutos = lstPedidosProdutos;
+        this.fireTableDataChanged();
     }
     
     public PedidosProdutos getBean(int rowIndex) {
