@@ -34,9 +34,9 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
         Util.habilitar(false, jTxtValorUni, jTxtTotal);
        
     }
-    public void setTelaAnterior(JDlgPedidos jDlgPedidos){
+    
+    public void setTelaAnterior(JDlgPedidos jDlgPedidos) {
         this.jDlgPedidos = jDlgPedidos;
-        
     }
 
     /**
@@ -165,10 +165,9 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
         PedidosProdutos pedidosProdutos = new PedidosProdutos();
         pedidosProdutos.setProdutos((Produtos) jCboProdutos.getSelectedItem());
         pedidosProdutos.setQuantidade(Util.strToInt(jTxtQuantidade.getText()) );
-        pedidosProdutos.setValorUnitario(Util.strToDouble(jTxtValorUni.getText()) );
-        jDlgPedidos.controllerPedidosProdutos.addBean(pedidosProdutos);
+        pedidosProdutos.setValorUnitario(Util.strToDouble(jTxtValorUni.getText()) );                
+        jDlgPedidos.controllerPedProd.addBean(pedidosProdutos);
         setVisible(false);
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

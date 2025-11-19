@@ -24,20 +24,20 @@ public class ControllerPedidosProdutos extends AbstractTableModel {
     public PedidosProdutos getBean(int rowIndex) {
         return (PedidosProdutos) lstPedidosProdutos.get(rowIndex);
     }
-    public void addBean(PedidosProdutos pedidosProdutos){
+
+    public void addBean(PedidosProdutos pedidosProdutos) {
         lstPedidosProdutos.add(pedidosProdutos);
         this.fireTableDataChanged();
+    }
     
-    }
-    public void removeBean(int rowIndex){
+    public void removeBean(int rowIndex) {
         lstPedidosProdutos.remove(rowIndex);
-         this.fireTableDataChanged();
+        this.fireTableDataChanged();
     }
-
+    
     @Override
     public int getRowCount() {
-        return lstPedidosProdutos.size();
-                
+        return lstPedidosProdutos.size();                
     }
 
     @Override
@@ -51,16 +51,15 @@ public class ControllerPedidosProdutos extends AbstractTableModel {
         if ( columnIndex == 0 ){
             return pedidosProdutos.getProdutos().getIdprodutos();
         } else if (columnIndex ==1) {
-            return pedidosProdutos.getProdutos().getNome();        
+            return pedidosProdutos.getProdutos().getNome();
         } else if (columnIndex ==2) {
             return pedidosProdutos.getQuantidade();
         } else if (columnIndex ==3) {
             return pedidosProdutos.getValorUnitario();
-        } else if (columnIndex ==4) {
+        }else if (columnIndex ==4) {
             return pedidosProdutos.getValorUnitario()*pedidosProdutos.getQuantidade();
         }
-        
-        return "";
+        return ""; 
     }
 
     @Override
@@ -68,7 +67,7 @@ public class ControllerPedidosProdutos extends AbstractTableModel {
         if ( columnIndex == 0) {
             return "Código";
         } else if ( columnIndex == 1) {
-            return "Pedidos";         
+            return "Produto";         
         } else if ( columnIndex == 2) {
             return "Quantidade";
         } else if ( columnIndex == 3) {
