@@ -60,8 +60,7 @@ public class PedidosProdutos  implements java.io.Serializable {
         this.pedidos = pedidos;
     }
 
-@ManyToOne(fetch=FetchType.EAGER
-)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="produtos")
     public Produtos getProdutos() {
         return this.produtos;

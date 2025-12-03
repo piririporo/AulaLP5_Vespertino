@@ -9,6 +9,7 @@ import bean.PedidosProdutos;
 import bean.Produtos;
 import dao.ProdutosDAO;
 import java.util.List;
+import javax.swing.JTable;
 import tools.Util;
 
 /**
@@ -17,6 +18,7 @@ import tools.Util;
  */
 public class JDlgPedidosProdutos extends javax.swing.JDialog {
     JDlgPedidos jDlgPedidos;
+    boolean incluir;
     /**
      * Creates new form JDlgPedidosProdutos
      */
@@ -35,8 +37,15 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
        
     }
     
-    public void setTelaAnterior(JDlgPedidos jDlgPedidos) {
+    public void setTelaAnterior(JDlgPedidos jDlgPedidos, PedidosProdutos pedidosProdutos) {
         this.jDlgPedidos = jDlgPedidos;
+        if (pedidosProdutos != null) {
+            incluir = false;
+            jCboProdutos.setSelectedItem(pedidosProdutos.getProdutos());
+            jTxtQuantidade.setText(Util.intToStr(pedidosProdutos.getQuantidade()));        
+        } else {
+            incluir = true;
+        }
     }
 
     /**
@@ -48,7 +57,7 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();//alterei sou o cara
         jCboProdutos = new javax.swing.JComboBox<Produtos>();
         jLabel2 = new javax.swing.JLabel();
         jTxtQuantidade = new javax.swing.JTextField();
@@ -166,7 +175,12 @@ public class JDlgPedidosProdutos extends javax.swing.JDialog {
         pedidosProdutos.setProdutos((Produtos) jCboProdutos.getSelectedItem());
         pedidosProdutos.setQuantidade(Util.strToInt(jTxtQuantidade.getText()) );
         pedidosProdutos.setValorUnitario(Util.strToDouble(jTxtValorUni.getText()) );                
-        jDlgPedidos.controllerPedProd.addBean(pedidosProdutos);
+        if (incluir == true) {
+           jDlgPedidos.controllerPedProd.addBean(pedidosProdutos);
+        } else {
+            jDlgPedidos.controllerPedProd.removeBean(jDlgPedidos.getjTable1().getSelectedRow());
+            jDlgPedidos.controllerPedProd.addBean(pedidosProdutos);
+        }
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

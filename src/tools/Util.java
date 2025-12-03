@@ -61,19 +61,19 @@ public class Util {
     
     public static Date strToDate(String data) {
         SimpleDateFormat fm = new SimpleDateFormat("dd/MM/YYYY");
-        
-            try {
-                return fm.parse(data);
-                        } catch (ParseException ex) {
-                Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return null;
+        try {
+            return fm.parse(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
+        return null;
+    }
 
     public static String dateToStr(Date data) {
         SimpleDateFormat fm = new SimpleDateFormat("dd/MM/YYYY");
         return fm.format(data);
+        
     }
     
 }

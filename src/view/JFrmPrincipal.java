@@ -38,28 +38,40 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuSair = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMnuMovimento = new javax.swing.JMenu();
+        jMnuConsultas = new javax.swing.JMenu();
+        jMnuProduto = new javax.swing.JMenu();
+        jMnuClientes = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gravar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/client32.png"))); // NOI18N
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
-        jButton2.setText("jButton2");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton2);
 
-        jButton3.setText("jButton3");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/icons8-carrinho-de-compras-24.png"))); // NOI18N
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton3);
 
         jMnuCadastros.setMnemonic('c');
@@ -96,9 +108,19 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnuCadastros);
 
-        jMenu2.setMnemonic('m');
-        jMenu2.setText("Movimento");
-        jMenuBar1.add(jMenu2);
+        jMnuMovimento.setMnemonic('m');
+        jMnuMovimento.setText("Movimento");
+        jMenuBar1.add(jMnuMovimento);
+
+        jMnuConsultas.setText("Consultas");
+
+        jMnuProduto.setText("Produtos");
+        jMnuConsultas.add(jMnuProduto);
+
+        jMnuClientes.setText("Clientes");
+        jMnuConsultas.add(jMnuClientes);
+
+        jMenuBar1.add(jMnuConsultas);
 
         setJMenuBar(jMenuBar1);
 
@@ -111,8 +133,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 250, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 234, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,6 +151,14 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgUsuarios jDlgUsuarios = new JDlgUsuarios(null, true);
         jDlgUsuarios.setVisible(true);
     }//GEN-LAST:event_jMnuUsuariosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +202,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jMnuCadastros;
+    private javax.swing.JMenu jMnuClientes;
+    private javax.swing.JMenu jMnuConsultas;
+    private javax.swing.JMenu jMnuMovimento;
+    private javax.swing.JMenu jMnuProduto;
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
     private javax.swing.JPopupMenu.Separator jSeparator1;

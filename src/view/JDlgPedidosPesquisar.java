@@ -6,9 +6,9 @@ package view;
 
 import bean.Pedidos;
 import dao.PedidosDAO;
-import dao.PedidosDAO;
 import java.util.List;
 import tools.Util;
+
 
 /**
  *
@@ -17,7 +17,7 @@ import tools.Util;
 public class JDlgPedidosPesquisar extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgPedidosPesquisar
+     * Creates new form JDlgUsuariosPesquisar
      */
     private JDlgPedidos jDlgPedidos;
     ControllerPedidos controllerPedidos;
@@ -26,7 +26,7 @@ public class JDlgPedidosPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Pesquisar Pedidos");
+        setTitle("Pesquisar Usuários");
         controllerPedidos = new ControllerPedidos();
         PedidosDAO pedidosDAO = new PedidosDAO();
         List lista = (List) pedidosDAO.listAll();
