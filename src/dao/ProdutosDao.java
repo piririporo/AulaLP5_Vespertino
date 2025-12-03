@@ -78,7 +78,7 @@ public class ProdutosDAO extends AbstractDAO{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(Produtos.class);
         criteria.add(Restrictions.like("nome", "%"+nome+"%"));
-        criteria.add(Restrictions.ge("ValorUnitario", valor));
+        criteria.add(Restrictions.ge("valorUnitario", valor));
         List lista = criteria.list();
         session.getTransaction().commit();        
         return lista;
